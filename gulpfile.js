@@ -1,21 +1,13 @@
 'use strict';
-/*
-const gulp = require('gulp');
-
-gulp.task('hello', function (callback) {
-    console.log('hello');
-    callback();
-});
-*/
-
 //remember кеширование цепочки обработки
 //path создает абсолютный путь
 //autoprefixer добавляет браузерные автопрефиксы
 //cached исключение одинаковых файлов из потока
 //cache кешит на диск
+
+const ignore = require('gulp-ignore');
 const gulp = require('gulp');
 const gulps = require('gulp-series');
-
 const stylus = require('gulp-stylus');
 const less = require('gulp-less');
 const concat = require('gulp-concat');
@@ -29,24 +21,11 @@ const browserSync = require('browser-sync').create();
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
 gulp.task('styles_less', function () {
-
-    return gulp.src('frontend/styles_less/main.less')
-
+    return gulp.src('styles/main.less')
         .pipe(gulpIf(isDevelopment, sourcemaps.init()))
         .pipe(less())
         .pipe(gulpIf(isDevelopment, sourcemaps.write('.')))
         .pipe(gulp.dest('public'))
-
-});
-
-gulp.task('styles', function() {
-
-    return gulp.src('frontend/styles/main.styl')
-
-        .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-        .pipe(stylus())
-        .pipe(gulpIf(isDevelopment, sourcemaps.write('.')))
-        .pipe(gulp.dest('public'));
 });
 
 gulp.task('clean', function () {
@@ -54,21 +33,48 @@ gulp.task('clean', function () {
 });
 
 gulp.task('assets', function () {
-    return gulp.src('frontend/assets/**', {since: gulp.lastRun("assets")})
+    return gulp.src('assets/**', {since: gulp.lastRun("assets")})
         .pipe(newer('public'))
         .pipe(debug({title: 'assets'}))
         .pipe(gulp.dest('public'));
 });
 
+gulp.task('images', function () {
+   return gulp.src(['blocks/header/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+       .pipe(ignore.exclude('./styles/**/*'))
+       .pipe(newer('public'))
+       .pipe(debug({title: 'header'}))
+       .pipe(gulp.dest('public/blocks/header'))
+});
 
-gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'assets')));
+gulp.task('images2', function () {
+    return gulp.src(['blocks/platform/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'platform'}))
+        .pipe(gulp.dest('public/blocks/platform'))
+});
+
+gulp.task('images3', function () {
+    return gulp.src(['common/**/**/*.*', '!common/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'common'}))
+        .pipe(gulp.dest('public/common'))
+});
+
+gulp.task('build', gulp.series('clean', gulp.parallel('styles_less', 'assets'), 'images3', 'images2', 'images'));
 
 //                          Инкрементальная сборка
 
 gulp.task('watch', function () {
-
-    gulp.watch('frontend/styles/**/*.*', gulp.series('styles'));
-    gulp.watch('frontend/assets/**/*.*', gulp.series('assets'));
+    gulp.watch('styles/**/*.*', gulp.series('styles_less'));
+    gulp.watch('**/styles/*.*', gulp.series('styles_less'));
+    gulp.watch('**/**/styles/*.*', gulp.series('styles_less'));
+    gulp.watch('assets/**/*.*', gulp.series('assets'));
+    gulp.watch('**/images/**/*.*', gulp.series('images3', 'images2', 'images'));
+    gulp.watch('**/**/images/**/*.*', gulp.series('images3', 'images2', 'images'));
+    gulp.watch('**/**/**/images/**/*.*', gulp.series('images3', 'images2', 'images'));
 });
 
 gulp.task('serve', function () {
@@ -80,11 +86,21 @@ gulp.task('dev', gulp.series('build', gulp.parallel('watch', 'serve')));
 browserSync.watch('public/**/*.*').on('change', browserSync.reload);
 
 
-
 /*
-gulp.task('styles', function() {
+//SASS
+gulp.task('styless', function() {
 
-    let pipline =  gulp.src('frontend/styles/main.styl')
+    return gulp.src('styless/main.styl')
+
+        .pipe(gulpIf(isDevelopment, sourcemaps.init()))
+        .pipe(stylus())
+        .pipe(gulpIf(isDevelopment, sourcemaps.write('.')))
+        .pipe(gulp.dest('public'));
+});
+
+gulp.task('styless', function() {
+
+    let pipline =  gulp.src('styless/main.styl')
 
     if(isDevelopment) {
         pipline = pipline.pipe(sourcemaps.init());

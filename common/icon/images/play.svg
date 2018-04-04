@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Play Video Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.6">
+        <g id="Play-Video-Icon">
+            <g id="play-video-icon">
+                <circle id="circle-1" fill="#323969" cx="30" cy="30" r="30"></circle>
+                <path d="M40,29.5 L23,39 L23,20 L40,29.5 L40,29.5 Z" id="path-1" fill="#F4F5F7"></path>
+            </g>
+        </g>
+    </g>
+</svg>
