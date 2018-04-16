@@ -1,8 +1,11 @@
 .header {
   background-image: url("blocks/header/images/BG-H.jpg");
   background-repeat: no-repeat;
-  background-position: center -200px;
+  background-attachment: scroll; //решило проблему уменьшения фона и отделения нижней секции от него (из-за пэддинга)
+  background-position: center center;
   background-size: cover;
+
+  min-width: 1190px;
 
   padding: 250px 0;
 

@@ -1,19 +1,23 @@
 .section {
-
-
-
-  &__container {
-    width: 568px;
-    height: 724px;
-
-    float: right;
-
-    background-color: #ececec;
-  }
+  position: relative;
+  min-width: 1190px;
 
   &__triangle {
-    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    //float: right;
 
-    margin-top: 240px;
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background: gray;
+      content: '';
+    }
   }
 }

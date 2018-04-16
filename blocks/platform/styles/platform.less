@@ -1,16 +1,24 @@
+@triangleWidth: 568px;
+
 .platform {
+  position: relative;
+  background-color: white;
 
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
 
+    width: @triangleWidth;
+    height: 100%;
+
+    background: #ececec;
+
+    content: '';
+  }
 
   &__content {
-    // Test size, auto resize.
-    width: 600px;
-    //height: 724px;
-    padding: 155px 0;
-
-    float: left;
-
-    //border: black solid 1px;
+    padding: 190px @triangleWidth 190px 0;
     background-color: white;
   }
 
@@ -22,11 +30,7 @@
     margin-bottom: 35px;
   }
 
-  &__description-basic {
-    margin-bottom: 30px;
-  }
-
-  &__description-basic-two {
+  &__text {
 
   }
 }

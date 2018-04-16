@@ -63,7 +63,32 @@ gulp.task('images3', function () {
         .pipe(gulp.dest('public/common'))
 });
 
-gulp.task('build', gulp.series('clean', gulp.parallel('styles_less', 'assets'), 'images3', 'images2', 'images'));
+gulp.task('images4', function () {
+    return gulp.src(['blocks/features/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'features'}))
+        .pipe(gulp.dest('public/blocks/features'))
+});
+
+gulp.task('images5', function () {
+    return gulp.src(['blocks/presentation/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'presentation'}))
+        .pipe(gulp.dest('public/blocks/presentation'))
+});
+
+gulp.task('images6', function () {
+    return gulp.src(['blocks/clients/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'clients'}))
+        .pipe(gulp.dest('public/blocks/clients'))
+});
+
+gulp.task('build', gulp.series('clean', gulp.parallel('styles_less', 'assets'), 'images6', 'images5',
+    'images4', 'images3', 'images2', 'images'));
 
 //                          Инкрементальная сборка
 
@@ -72,9 +97,9 @@ gulp.task('watch', function () {
     gulp.watch('**/styles/*.*', gulp.series('styles_less'));
     gulp.watch('**/**/styles/*.*', gulp.series('styles_less'));
     gulp.watch('assets/**/*.*', gulp.series('assets'));
-    gulp.watch('**/images/**/*.*', gulp.series('images3', 'images2', 'images'));
-    gulp.watch('**/**/images/**/*.*', gulp.series('images3', 'images2', 'images'));
-    gulp.watch('**/**/**/images/**/*.*', gulp.series('images3', 'images2', 'images'));
+    gulp.watch('**/images/**/*.*', gulp.series('images6', 'images5', 'images4', 'images3', 'images2', 'images'));
+    gulp.watch('**/**/images/**/*.*', gulp.series('images6', 'images5', 'images4', 'images3', 'images2', 'images'));
+    gulp.watch('**/**/**/images/**/*.*', gulp.series('images6', 'images5', 'images4', 'images3', 'images2', 'images'));
 });
 
 gulp.task('serve', function () {

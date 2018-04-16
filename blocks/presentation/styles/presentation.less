@@ -1,0 +1,48 @@
+@triangle-macImgWidth: 655px;
+
+.presentation {
+  overflow-y: hidden;
+
+  min-width: 1450px;
+
+  &__triangle {
+    width: 0;
+    height: 0;
+
+    border-left: 688px solid #ff8a8a; //688
+    border-top: 720px solid transparent; //605
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    &:after {
+      position: absolute;
+      bottom: 70px;
+      right: -98px;
+
+      width: 630px;
+      height: 367px;
+
+      background-image: url("blocks/presentation/images/MacBook.jpg");
+      background-repeat: no-repeat;
+      content: '';
+    }
+  }
+
+  &__content {
+    padding: 150px 0 120px @triangle-macImgWidth;
+  }
+
+  &__label {
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    margin-bottom: 35px;
+  }
+
+  &__text {
+
+  }
+}

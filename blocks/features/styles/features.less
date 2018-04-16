@@ -1,0 +1,104 @@
+.features {
+  background: #f6f5f3;
+
+  overflow-y: hidden;
+
+  &__content {
+    position: relative;
+  }
+
+  &__image {
+    width: 300px;
+    height: 300px;
+
+    &_penholder {
+      position: absolute;
+
+      background-image: url("blocks/features/images/PenHolder.jpg");
+      background-repeat: no-repeat;
+
+      left: -65px;
+      top: -0px;
+
+    }
+
+    &_earphones {
+      position: absolute;
+
+      background-image: url("blocks/features/images/Earphones.jpg");
+      background-repeat: no-repeat;
+
+      top: -3px;
+      right: -85px;
+    }
+
+    &_coffecup {
+      position: absolute;
+
+      background-image: url("blocks/features/images/CoffeCup.jpg");
+      background-repeat: no-repeat;
+
+      right: -150px;
+      bottom: -175px;
+    }
+
+  }
+
+  &__inner {
+    padding: 150px 0;
+
+    text-align: center;
+    //background-color: red;
+  }
+
+  &__label {
+    text-align: inherit;
+
+    margin-bottom: 10px;
+  }
+
+  &__title-inner {
+    margin-bottom: 70px;
+
+    text-align: inherit;
+  }
+
+  &__items {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__item {
+    width: calc(~"28% - 10px");
+    min-width: 350px;
+
+    background-repeat: no-repeat;
+    background-position: top center;
+
+    &_one {
+      background-image: url("blocks/features/images/item-one.jpg");
+    }
+
+    &_two {
+      background-image: url("blocks/features/images/item-two.jpg");
+    }
+
+    &_three {
+      background-image: url("blocks/features/images/item-three.jpg");
+    }
+  }
+
+  &__title {
+    margin-top: 95px;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
+
+// переделать картинки (обернуть в дивы)
