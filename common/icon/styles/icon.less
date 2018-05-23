@@ -11,6 +11,22 @@
   cursor: pointer;
 
   &_play {
-    background-color: red;
+    background-color: #8286a4;
+
+    &:before {
+      content: '';
+
+      width: 0;
+      height: 0;
+
+      border-left: 17px solid #ffffff;
+      border-bottom: 10px solid transparent;
+      border-top: 10px solid transparent;
+
+      position: absolute;
+
+      top: 19.250px;
+      left: 23px;
+    }
   }
 }

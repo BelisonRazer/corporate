@@ -1,0 +1,48 @@
+.features-two {
+  background-color: @features-background-color;
+  background-repeat: no-repeat;
+  background-image: url("blocks/features-two/images/features-two-image.jpg");
+  background-position: center bottom;
+
+  padding-bottom: 350px;
+
+  &__content {
+    text-align: center;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 100px;
+    padding-bottom: 75px; //тк. у img верхний размер больше (невидимая часть)
+  }
+
+  &__label {
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    margin-bottom: 35px;
+  }
+
+  &__text {
+    max-width: 660px;
+
+    text-align: inherit;
+  }
+
+  //&__image {
+  //  //border: 1px solid red;
+//
+  //  display: inline-block;
+  //  text-align: inherit;
+//
+  //  padding: 190px 460px;
+//
+  //  background-image: url("blocks/features-two/images/features-two-image.jpg");
+  //  background-repeat: no-repeat;
+  //}
+}

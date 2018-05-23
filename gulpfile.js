@@ -15,7 +15,7 @@ const debug = require('gulp-debug');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpIf = require('gulp-if');
 const del = require('del');
-const newer = require('gulp-newer'); // filtred new file
+const newer = require('gulp-newer'); // filtered new file
 const browserSync = require('browser-sync').create();
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
@@ -87,7 +87,31 @@ gulp.task('images6', function () {
         .pipe(gulp.dest('public/blocks/clients'))
 });
 
-gulp.task('build', gulp.series('clean', gulp.parallel('styles_less', 'assets'), 'images6', 'images5',
+gulp.task('images7', function () {
+    return gulp.src(['blocks/features-two/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'features-two'}))
+        .pipe(gulp.dest('public/blocks/features-two'))
+});
+
+gulp.task('images8', function () {
+    return gulp.src(['blocks/registration/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'registration'}))
+        .pipe(gulp.dest('public/blocks/registration'))
+});
+
+gulp.task('images9', function () {
+    return gulp.src(['blocks/footer/**/*.*', '!blocks/**/**/styles/*'], {since: gulp.lastRun("images")})
+        .pipe(ignore.exclude('./styles/**/*'))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'footer'}))
+        .pipe(gulp.dest('public/blocks/footer'))
+});
+
+gulp.task('build', gulp.series('clean', gulp.parallel('styles_less', 'assets'), 'images9', 'images8', 'images7', 'images6', 'images5',
     'images4', 'images3', 'images2', 'images'));
 
 //                          Инкрементальная сборка
@@ -97,9 +121,9 @@ gulp.task('watch', function () {
     gulp.watch('**/styles/*.*', gulp.series('styles_less'));
     gulp.watch('**/**/styles/*.*', gulp.series('styles_less'));
     gulp.watch('assets/**/*.*', gulp.series('assets'));
-    gulp.watch('**/images/**/*.*', gulp.series('images6', 'images5', 'images4', 'images3', 'images2', 'images'));
-    gulp.watch('**/**/images/**/*.*', gulp.series('images6', 'images5', 'images4', 'images3', 'images2', 'images'));
-    gulp.watch('**/**/**/images/**/*.*', gulp.series('images6', 'images5', 'images4', 'images3', 'images2', 'images'));
+    gulp.watch('**/images/**/*.*', gulp.series('images9', 'images8', 'images7', 'images6', 'images5', 'images4', 'images3', 'images2', 'images'));
+    gulp.watch('**/**/images/**/*.*', gulp.series('images9', 'images8', 'images7', 'images6', 'images5', 'images4', 'images3', 'images2', 'images'));
+    gulp.watch('**/**/**/images/**/*.*', gulp.series('images9', 'images8', 'images7', 'images6', 'images5', 'images4', 'images3', 'images2', 'images'));
 });
 
 gulp.task('serve', function () {

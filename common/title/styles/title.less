@@ -17,12 +17,28 @@
     }
   }
 
+  &_dots-white {
+    &:after {
+      display: inline-block;
+      margin-left: 8px;
+
+      color: #ffffff;
+      letter-spacing: -2px;
+
+      content: '. . .'
+    }
+  }
+
   &_small {
     font-size: 22px;
   }
 
   &_small-white {
     font-size: 22px;
+    color: #ffffff;
+  }
+
+  &_white {
     color: #ffffff;
   }
 }

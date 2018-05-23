@@ -1,4 +1,4 @@
-.text{
+.text {
   font-family: 'Exo', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -16,11 +16,53 @@
     margin-bottom: 0;
   }
 
-  &_white {
+  &_white-alpha-italic {
     font-weight: 400;
     font-style: italic;
 
     color: rgba(255, 255, 255, 0.659);
   }
-}
 
+  &_white-alpha {
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.659);
+  }
+
+  &_white {
+    font-weight: 400;
+    color: rgb(246, 245, 243);
+  }
+
+  &_services {
+    font-weight: 400;
+    color: rgba(246, 245, 243, 0.6);
+    text-align: center;
+    
+    &:after {
+      content: "terms & Services";
+
+      text-decoration: underline;
+
+      cursor: pointer;
+    }
+  }
+
+  &_arrow {
+
+    &:before {
+      position: absolute;
+
+      right: 200px;
+      top: 10px;
+
+      content: '';
+
+      //img 16 35
+      width: 16px;
+      height: 35px;
+
+      background-image: url("blocks/registration/images/arrow2.png");
+    }
+  }
+}
