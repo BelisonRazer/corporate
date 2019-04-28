@@ -1,9 +1,4 @@
 'use strict';
-//remember кеширование цепочки обработки
-//path создает абсолютный путь
-//autoprefixer добавляет браузерные автопрефиксы
-//cached исключение одинаковых файлов из потока
-//cache кешит на диск
 
 const ignore = require('gulp-ignore');
 const gulp = require('gulp');
@@ -17,6 +12,7 @@ const gulpIf = require('gulp-if');
 const del = require('del');
 const newer = require('gulp-newer'); // filtered new file
 const browserSync = require('browser-sync').create();
+const autoprefixer  = require('gulp-autoprefixer');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
@@ -24,6 +20,7 @@ gulp.task('styles_less', function () {
     return gulp.src('styles/main.less')
         .pipe(gulpIf(isDevelopment, sourcemaps.init()))
         .pipe(less())
+        .pipe(autoprefixer(['last 15 versions']))
         .pipe(gulpIf(isDevelopment, sourcemaps.write('.')))
         .pipe(gulp.dest('public'))
 });
@@ -133,51 +130,3 @@ gulp.task('serve', function () {
 gulp.task('dev', gulp.series('build', gulp.parallel('watch', 'serve')));
 
 browserSync.watch('public/**/*.*').on('change', browserSync.reload);
-
-
-/*
-//SASS
-gulp.task('styless', function() {
-
-    return gulp.src('styless/main.styl')
-
-        .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-        .pipe(stylus())
-        .pipe(gulpIf(isDevelopment, sourcemaps.write('.')))
-        .pipe(gulp.dest('public'));
-});
-
-gulp.task('styless', function() {
-
-    let pipline =  gulp.src('styless/main.styl')
-
-    if(isDevelopment) {
-        pipline = pipline.pipe(sourcemaps.init());
-    }
-
-    pipline = pipline
-        .pipe(stylus())
-
-    if(isDevelopment) {
-        pipline = pipline.pipe(sourcemaps.write('.'))
-    }
-
-    return pipline
-        .pipe(gulp.dest('public'));
-});
-*/
-
-/* var gulp = require('gulp');
-
-gulp.task ('myTask', function(callback) {
-    console.log('Hello');
-    callback();
-});
-
-function nameVariant(callback) {
-    console.log('it is work!');
-    callback();
-};
-
-gulp.task('lol', nameVariant);
-*/

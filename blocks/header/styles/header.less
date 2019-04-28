@@ -1,39 +1,38 @@
 .header {
-  background-image: url("blocks/header/images/BG-H.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll; //решило проблему уменьшения фона и отделения нижней секции от него (из-за пэддинга)
-  background-position: center center;
-  background-size: cover;
+	background-image: url("./blocks/header/images/BG-H.jpg");
+	background-repeat: no-repeat;
+	background-attachment: scroll; //решило проблему уменьшения фона и отделения нижней секции от него (из-за пэддинга)
+	background-position: center center;
+	background-size: cover;
 
-  min-width: 1190px;
+	padding: 250px 0;
 
-  padding: 250px 0;
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 
-  &__content {
-    width: 709px;
+		width: 709px;
+	}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+	&__heading {
+		margin-bottom: 40px;
+	}
 
-  &__heading {
-    margin-bottom: 40px;
-  }
+	&__heading-media-small {
+		margin-bottom: 40px;
+	}
 
-  &__icon {
-    position: relative;
+	&__icon {
+		position: relative;
 
-    margin-bottom: 40px;
-  }
+		margin-bottom: 40px;
+	}
 
-  &__button {
-    margin-bottom: 20px;
-  }
+	&__button {
+		margin-bottom: 20px;
+	}
 
-  &__description {
-
-  }
+	&__description {}
 }
-

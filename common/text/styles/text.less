@@ -1,68 +1,66 @@
 .text {
-  font-family: 'Exo', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: none;
-  text-align: left;
-  color: rgba(40, 40, 40, 0.6);
-  letter-spacing: 0.04em;
-  line-height: 26px;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: none;
+	text-align: left;
+	color: rgba(40, 40, 40, 0.6);
+	letter-spacing: 0.04em;
+	line-height: 26px;
 
-  & p {
-    margin-bottom: 30px;
-  }
+	& p {
+		margin-bottom: 30px;
+	}
 
-  & p:last-child {
-    margin-bottom: 0;
-  }
+	& p:last-child {
+		margin-bottom: 0;
+	}
 
-  &_white-alpha-italic {
-    font-weight: 400;
-    font-style: italic;
+	&_white-alpha-italic {
+		font-weight: 400;
+		font-style: italic;
 
-    color: rgba(255, 255, 255, 0.659);
-  }
+		color: rgba(255, 255, 255, 0.659);
+	}
 
-  &_white-alpha {
-    font-weight: 400;
+	&_white-alpha {
+		font-weight: 400;
+		color: rgba(255, 255, 255, 0.659);
+	}
 
-    color: rgba(255, 255, 255, 0.659);
-  }
+	&_white {
+		font-weight: 400;
+		color: rgb(246, 245, 243);
+	}
 
-  &_white {
-    font-weight: 400;
-    color: rgb(246, 245, 243);
-  }
+	&_services {
+		font-weight: 400;
+		color: rgba(246, 245, 243, 0.6);
+		text-align: center;
 
-  &_services {
-    font-weight: 400;
-    color: rgba(246, 245, 243, 0.6);
-    text-align: center;
-    
-    &:after {
-      content: "terms & Services";
+		&:after {
+			content: "terms & Services";
 
-      text-decoration: underline;
+			text-decoration: underline;
 
-      cursor: pointer;
-    }
-  }
+			cursor: pointer;
+		}
+	}
 
-  &_arrow {
+	&_arrow {
 
-    &:before {
-      position: absolute;
+		&:before {
+			position: absolute;
 
-      right: 200px;
-      top: 10px;
+			right: 200px;
+			top: 10px;
 
-      content: '';
+			content: '';
 
-      //img 16 35
-      width: 16px;
-      height: 35px;
+			width: 16px;
+			height: 35px;
 
-      background-image: url("blocks/registration/images/arrow2.png");
-    }
-  }
+			background-image: url("./blocks/registration/images/arrow2.png");
+		}
+	}
 }

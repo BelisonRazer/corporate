@@ -1,100 +1,84 @@
 .clients {
-  background-color: #000000;
-  background-image: url("blocks/clients/images/clients-BG.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+	background-color: #000000;
+	background-image: url("./blocks/clients/images/clients-BG.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
 
-  &__content {
-    padding: 70px 0;
-  }
+	&__content {
+		padding: 70px 1%;
+	}
 
-  &__items {
-    position: relative;
+	&__items {
+		position: relative;
 
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
 
-    margin-bottom: 90px;
+		margin-bottom: 90px;
 
-    text-align: center;
-  }
+		text-align: center;
+	}
 
-  &__item {
-    min-width: 330px;
-    width: calc(33.333% - 10px);
+	&__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: baseline;
+		align-items: center;
 
-    //border: 1px solid red;
+		min-width: 330px;
+		width: calc(33.333% - 10px);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: baseline;
-    align-items: center;
+		&_one {}
 
-    &_one {
+		&_two {}
 
-    }
+		&_three {}
+	}
 
-    &_two {
+	&__picture {
+		width: 76px;
+		height: 76px;
 
-    }
+		background-color: #4e4e5e;
 
-    &_three {
+		border: 2px solid;
+		border-color: rgb(29, 30, 36);
 
-    }
-  }
+		margin-bottom: 20px;
 
-  &__picture {
-    width: 76px;
-    height: 76px;
+		&_one {}
 
-    background-color: #4e4e5e;
+		&_two {}
 
-    border: 2px solid;
-    border-color: rgb(29, 30, 36);
+		&_three {}
+	}
 
-    margin-bottom: 20px;
+	&__title {
+		margin-bottom: 5px;
+	}
 
-    &_one {
+	&__label {
+		margin-bottom: 15px;
+	}
 
-    }
+	&__text {
+		text-align: inherit;
+	}
 
-    &_two {
+	&__logos {
+		position: relative;
 
-    }
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		width: 100%;
+	}
 
-    &_three {
+	&__logo {
+		display: inline-block;
+	}
 
-    }
-  }
-
-  &__title {
-    margin-bottom: 5px;
-  }
-
-  &__label {
-    margin-bottom: 15px;
-  }
-
-  &__text {
-    text-align: inherit;
-  }
-
-  &__logos {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  &__logo {
-    display: inline-block;
-  }
-
-  &__logo-image {
-
-  }
+	&__logo-image {}
 }
